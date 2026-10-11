@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recall - study companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="bar">
+    <h1 class="logo">Recall</h1>
+    <nav role="tablist" aria-label="Sections">
+      <button role="tab" data-tab="decks" aria-selected="true">Decks</button>
+      <button role="tab" data-tab="study" aria-selected="false">Study</button>
+      <button role="tab" data-tab="timer" aria-selected="false">Focus timer</button>
+      <button role="tab" data-tab="stats" aria-selected="false">Progress</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- DECKS -->
+    <section id="tab-decks" class="tab">
+      <div class="split">
+        <div>
+          <form id="deckForm" class="inline-form">
+            <input id="deckName" type="text" maxlength="100" placeholder="New deck name" aria-label="New deck name" required>
+            <button class="btn" type="submit">Create deck</button>
+          </form>
+          <div id="deckList" class="decklist"></div>
+        </div>
+        <div id="deckDetail" class="detail"><p class="empty">Pick a deck to add cards, or create your first one.</p></div>
+      </div>
+    </section>
+
+    <!-- STUDY -->
+    <section id="tab-study" class="tab" hidden>
+      <div class="inline-form">
+        <select id="studyDeck" aria-label="Deck to study"></select>
+        <button id="studyStart" class="btn" type="button">Start session</button>
+      </div>
+      <div id="studyArea"><p class="empty">Choose a deck and start. Only cards that are due today will show up.</p></div>
+    </section>
+
+    <!-- TIMER -->
+    <section id="tab-timer" class="tab" hidden>
+      <div class="timer">
+        <div class="modes" role="group" aria-label="Timer mode">
+          <button id="modeFocus" class="chip on" type="button">Focus</button>
+          <button id="modeBreak" class="chip" type="button">Break</button>
+        </div>
+        <p id="clock" class="clock" role="timer" aria-live="off">25:00</p>
+        <div class="controls">
+          <button id="timerToggle" class="btn" type="button">Start</button>
+          <button id="timerReset" class="btn ghost" type="button">Reset</button>
+        </div>
+        <div class="lengths">
+          <label>Focus minutes <input id="focusMin" type="number" min="1" max="120" value="25"></label>
+          <label>Break minutes <input id="breakMin" type="number" min="1" max="60" value="5"></label>
+        </div>
+        <p id="timerNote" class="hint">Finished focus sessions are saved to your progress.</p>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="tab-stats" class="tab" hidden>
+      <div class="numbers">
+        <div><span id="nStreak">0</span> day streak</div>
+        <div><span id="nCards">0</span> cards</div>
+        <div><span id="nMature">0</span> well known</div>
+        <div><span id="nReviews">0</span> reviews</div>
+      </div>
+      <div class="charts">
+        <figure><figcaption>Cards reviewed per day</figcaption><canvas id="reviewChart" height="150"></canvas></figure>
+        <figure><figcaption>Focus minutes per day</figcaption><canvas id="focusChart" height="150"></canvas></figure>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
