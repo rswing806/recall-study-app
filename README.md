@@ -82,8 +82,19 @@ These check the scheduling algorithm: intervals grow after good answers, a faile
 
 ## What I learned
 
-<!-- Write this part yourself, in your own words. Name one or two real problems you ran into
-     and how you solved them. Admissions readers care about this section most. -->
+- Algorithm design: understanding and implementing the SM-2 spaced-repetition algorithm.
+
+- Problem-solving: translating a learning strategy into precise programming rules.
+
+- Date and interval calculations: scheduling the next review according to a card's performance.
+
+- Data handling: importing and exporting flashcards using CSV files.
+
+- Progress tracking: calculating study streaks and presenting statistics.
+
+- Application logic: integrating a Pomodoro timer with a revision workflow.
+
+- Testing and debugging: checking that cards are scheduled correctly for different answers.
 
 ## Ideas for next steps
 
